@@ -1,0 +1,23 @@
+.right-questions-background {
+    background-color: #c3f2b3;
+}
+
+.wrong-questions-background {
+    background-color:#e86c54 ;
+}
+
+.attempted-questions-background {
+    background-color: #d4cecd;
+}
+.questions-counter{
+    ul li{
+        display: inline;
+        padding: 20px;
+        // margin: 20px;
+        // padding-top: 20px;
+    }
+}
+
+.answer-count {
+    font-size: 20px;
+}

@@ -1,0 +1,73 @@
+<div class="sidebar">
+    <div class="login-main-text">
+      <h2>Login</h2>
+      <p>Login to check your Knowledge</p>
+    </div>
+    <div class="text-center">
+      <img src="assets/images/quize3.png" alt="Login" />
+    </div>
+  </div>
+  <div class="main">
+    <div class="col-md-6 col-sm-12">
+      <div class="login-form">
+        <form>
+          <div class="form-group">
+            <label>Enter Email</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter Email"
+              [(ngModel)]="user.username"
+              name="username"
+            />
+          </div>
+          <div class="form-group mb-0">
+            <label>Password</label>
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password"
+              [(ngModel)]="user.password"
+              name="password"
+              readonly
+            />
+            <div
+              class="alert alert-info alert-dismissible fade show mt-2"
+              role="alert"
+            >
+              Password is <strong>test@123</strong>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="alert"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+          <div class="text-right m-1">
+            <a (click)="forgetPassword($event)" href="#">Forget Password</a>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary btn-block"
+            (click)="login()"
+          >
+            <i class="fa fa-sign-in fa-fw"></i>
+            Login
+          </button>
+          <div class="text-center py-2">OR</div>
+          <button
+            type="submit"
+            class="btn btn-outline-dark btn-block"
+            (click)="register()"
+          >
+            <i class="fa fa-user-plus fa-fw"></i>
+            Register
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

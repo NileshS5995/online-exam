@@ -1,0 +1,104 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-3 col-xl-3 col-md-12 col-sm-12">
+      <div class="card mt-2" >
+        <div class="card-body">
+          <div>
+            <p>Total Questions : {{questions.length}}</p>
+          </div>
+            <div class="row">
+              <div class="col-2" *ngFor="let question of questions index as i;">
+                <div class="question-box {{ question.selected ===  null ? '' : question.selected === 'skip' ? 'question-box-bg-yellow' : 'question-box-bg-blue' }}" (click)="getQuestionsById(question.id)" >{{i+1}}</div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-9 col-xl-9 col-md-12 col-sm-12">
+      <div class="card mt-2" >
+        <div class="card-body">
+          <div class="row">
+            <div class="col-9"><div class="question-circle">{{question.id}}</div></div>
+            <div class="col-3"> <app-timer *ngIf = "questions.length" [noOfQuestions] = "questions.length" [redirectUrl]="redirectUrl"></app-timer></div>
+          </div>
+          <div class="mt-3">
+            <form #questionTest="ngForm" novalidate >
+              <div><strong>{{question.question}}</strong></div>
+              <div class="form-group row">
+                <div class="col-md-12 col-form-label" *ngIf="question.a">
+                  <div class="form-check form-check-inline mr-1">
+                    <input class="form-check-input" type="radio" id="a" name="{{question.id}}" value="a" [(ngModel)]="question.selected" [ngModelOptions]="{standalone: true}">
+                    <label class="form-check-label cursor-pointer" for="a">A) {{question?.a}} </label>
+                  </div>
+                </div>
+                <div class="col-md-12 col-form-label" *ngIf="question.b">
+                  <div class="form-check form-check-inline mr-1">
+                    <input class="form-check-input" type="radio" name="{{question.id}}" id = "b" value="b" [(ngModel)]="question.selected" [ngModelOptions]="{standalone: true}">
+                    <label class="form-check-label cursor-pointer" for="b">B) {{question?.b}}</label>
+                  </div>
+                </div>
+                <div class="col-md-12 col-form-label" *ngIf="question.c">
+                  <div class="form-check form-check-inline mr-1">
+                    <input class="form-check-input" type="radio" name="{{question.id}}" value="c" id ="c" [(ngModel)]="question.selected" [ngModelOptions]="{standalone: true}">
+                    <label class="form-check-label cursor-pointer" for="c">C) {{question?.c}}</label>
+                  </div>
+                </div>
+                <div class="col-md-12 col-form-label" *ngIf="question.d">
+                  <div class="form-check form-check-inline mr-1">
+                    <input class="form-check-input" type="radio" name="{{question.id}}" value="d" id="d" [(ngModel)]="question.selected" [ngModelOptions]="{standalone: true}">
+                    <label class="form-check-label cursor-pointer" for="d">D) {{question?.d}}</label>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="mt-3 mb-3">
+            <div class="row">
+              <div class="col-lg-2 col-xl-2 col-md-6 col-sm-6 col-xs-6 btn-group special mt-2">
+                <button type="button" class="btn btn-outline-primary {{disabledPrevious}}" (click)="getQuestionsById(previous)"> <i class="fa fa-arrow-left"></i> Pre</button>
+              </div>
+              <div class="col-lg-2 col-xl-2 col-md-6 col-sm-6 col-xs-6 btn-group special mt-2">
+                <button type="button" class="btn btn-outline-danger" (click)="submitAnswer(question.id, 'Reset')" >Reset</button>
+              </div>
+              <div class="col-lg-2 col-xl-2 col-md-6 col-sm-6 col-xs-6 btn-group special mt-2">
+                <button type="button" class="btn btn-outline-warning" (click)="submitAnswer(question.id, 'skip')" >Skip</button>
+              </div>
+              <div class="col-lg-2 col-xl-2 col-md-6 col-sm-6 col-xs-6 btn-group special mt-2">
+              <button type="button" class="btn btn-outline-success" (click)="submitAnswer(question.id)" >Submit</button>
+              </div>
+              <div class="col-lg-2 col-xl-2 col-md-6 col-sm-6 col-xs-6 btn-group special mt-2">
+                <button type="button" class="btn btn-outline-info" (click)="open(mymodal)">Submit Test</button>
+              </div>
+              <div class="col-lg-2 col-xl-2 col-md-6 col-sm-6 col-xs-6 btn-group special mt-2">
+                <button type="button" class="btn btn-outline-primary {{disabledNext}}" (click)="getQuestionsById(next)">Next  <i class="fa fa-arrow-right"></i> </button>
+              </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Is you want to submit the Test ? 
+  </div>
+  <div class="modal-footer">
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-lg-6 btn-group special mt-2">
+        <button type="button" class="btn btn-outline-success" (click)="submitTest()">Yes</button>
+      </div>
+      <div class="col-md-6 col-sm-6 col-lg-6 btn-group special mt-2">
+        <button type="button" class="btn btn-outline-danger" (click)="modal.close('Save click')">No</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+</div>

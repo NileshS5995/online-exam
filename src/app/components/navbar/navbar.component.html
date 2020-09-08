@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top"  *ngIf="authService.userValue">
+<div class="container">
+   <a class="navbar-brand" href="#">
+    <img
+      src="assets/images/logo.png"
+      width="120"
+      height="70"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      (click)="toggleNavbarCollapsing()"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="navbar-collapse float-left"
+      id="navbarNav"
+      [class.collapse]="navbarCollapsed"
+      
+    >
+      <hr class="mb-4" *ngIf="navbarCollapsed" />
+      <ul class="navbar-nav mr-auto " >
+        <!-- <li
+          class="nav-item"
+          *ngIf="router.isActive('/questions', true); else Exams"
+        >
+          <a class="nav-link active" routerLink="/questions">Exams</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="result" routerLinkActive="active">Result</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="add-questions" routerLinkActive="active">Add Question</a>
+        </li>
+        <!-- <ng-template #Exams>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="questions" routerLinkActive="active"
+              >Exams</a
+            >
+          </li>
+        </ng-template> -->
+          <li class="nav-item" ngbDropdown routerLinkActive="active">
+            <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button">
+              <i class="fa fa-user-circle fa-fw" aria-hidden="true"></i>
+            Account
+            </a>
+            <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item hand">
+                <i class="fa fa-user-circle fa-fw"></i>
+                Profile
+              </a>
+              <a class="dropdown-item hand" (click)="logout($event)">
+                <i class="fa fa-power-off fa-fw" aria-hidden="true"></i>
+                Logout
+              </a>
+            </div>
+          </li>
+      </ul>
+    </div>
+  </div>
+  </nav>

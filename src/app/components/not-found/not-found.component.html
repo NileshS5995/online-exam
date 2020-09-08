@@ -1,0 +1,9 @@
+<div class="jumbotron my-5 text-center">
+    <h2>{{ title }}</h2>
+    <p class="lead">{{ description }}</p>
+    <div *ngIf="showRedirectBtn">
+      <button (click)="redirectToUrl()" class="btn btn-lg btn-primary">
+        {{ redirectBtnLabel }}
+      </button>
+    </div>
+  </div>

@@ -1,0 +1,60 @@
+<div class="container">
+    <h3 style="text-align:center">
+     Add Questions To our Question Bank
+    </h3>
+    <div class="card mt-3" >
+      <div class="card-body">
+        <form [formGroup]="addQuestionsForm" (submit)="saveQuestions()">
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Questions Title</label>
+                <textarea class="form-control" rows="3" formControlName="question"></textarea>
+                <div class="text-danger" *ngIf="addQuestionsForm.controls['question'].errors && addQuestionsForm.controls['question'].errors.required && (!addQuestionsForm.controls['question'].pristine || formIsInvalid)">
+                  Question filed is Required
+               </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Option A</label>
+              <input type="text" class="form-control" formControlName="a" id="exampleFormControlInput1" placeholder="Please Enter the value of the option A">
+              <div class="text-danger" *ngIf="addQuestionsForm.controls['a'].errors && addQuestionsForm.controls['a'].errors.required && (!addQuestionsForm.controls['a'].pristine || formIsInvalid)">
+               Option A is Required
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Option B</label>
+                <input type="text" class="form-control" formControlName="b" id="exampleFormControlInput1" placeholder="Please Enter the value of the option B">
+                <div class="text-danger" *ngIf="addQuestionsForm.controls['b'].errors && addQuestionsForm.controls['b'].errors.required && (!addQuestionsForm.controls['b'].pristine || formIsInvalid)">
+                  Option B field is Required
+                 </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Option c</label>
+                <input type="text" class="form-control" formControlName="c" id="exampleFormControlInput1" placeholder="Please Enter the value of the option C">
+                <div class="text-danger" *ngIf="addQuestionsForm.controls['c'].errors && addQuestionsForm.controls['c'].errors.required && (!addQuestionsForm.controls['c'].pristine || formIsInvalid)">
+                  Option C is Required
+                 </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Option D</label>
+                <input type="text" class="form-control"  formControlName="d" id="exampleFormControlInput1" placeholder="Please Enter the value of the option D">
+                <div class="text-danger" *ngIf="addQuestionsForm.controls['d'].errors && addQuestionsForm.controls['d'].errors.required && (!addQuestionsForm.controls['d'].pristine || formIsInvalid)">
+                  Option D is Required
+                 </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Answer (Answer is in the form of the options EX. - a,b,c,d)</label>
+                <input type="text" class="form-control" formControlName="answer" id="exampleFormControlInput1" placeholder="Please Enter the Answer is in form of the option">
+                <div class="text-danger" *ngIf="addQuestionsForm.controls['answer'].errors && addQuestionsForm.controls['answer'].errors.required && (!addQuestionsForm.controls['answer'].pristine || formIsInvalid)">
+                   Answer field is Required
+                 </div>
+                 <div *ngIf="addQuestionsForm.controls['answer'].errors.answerValidator">The Answer should be either a,b,c,d or A,B,C,D</div>
+              </div>
+            <div class="row">
+            <div class="col-12 " style="justify-content: center;display: flex;">
+                <button type="button" class="btn btn-default"  style="margin-right: 30px;">Cancel</button>
+                <button type="button" (click) ="saveQuestions()" class="btn btn-primary"  >Submit</button>
+            </div>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>
